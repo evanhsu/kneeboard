@@ -6,18 +6,18 @@ import {
 import { AppText, PaneTitle, PaneLabel } from "../StyledText";
 import { pane as paneLayout } from '../../constants/Layout';
 
-function FlightTimePane(props) {
-  const { trip, cumulative } = props;
+function ClockPane(props) {
+  const { start, end } = props;
 
   return (
     <View style={styles.container}>
-      <PaneTitle>Flight Time</PaneTitle>
-      <PaneLabel>Trip: <AppText>{trip}</AppText></PaneLabel>
-      <PaneLabel>Cumulative: <AppText>{cumulative}</AppText></PaneLabel>
+      <PaneTitle>Clock</PaneTitle>
+      <PaneLabel>Start: <AppText>{start}</AppText></PaneLabel>
+      <PaneLabel>End: <AppText>{end}</AppText></PaneLabel>
     </View>
   );
 }
 
 const styles = StyleSheet.create(paneLayout);
 
-export default FlightTimePane;
+export default ClockPane;

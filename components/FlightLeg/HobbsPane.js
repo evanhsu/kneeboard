@@ -1,31 +1,23 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { AppText, PaneTitle, PaneLabel } from "../StyledText";
+import { pane as paneLayout } from '../../constants/Layout';
 
 function HobbsPane(props) {
-  const {start, end} = props;
+  const { start, end } = props;
 
   return (
     <View style={styles.container}>
-      <Text>HOBBS</Text>
-      <Text>Start: {start}</Text>
-      <Text>End: {end}</Text>
+      <PaneTitle>HOBBS</PaneTitle>
+      <PaneLabel>Start: <AppText>{start}</AppText></PaneLabel>
+      <PaneLabel>End: <AppText>{end}</AppText></PaneLabel>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    borderRightWidth: 1,
-    borderRightColor: '#992222',
-  },
-  title: {
-    fontSize: 10,
-  }
-});
+const styles = StyleSheet.create(paneLayout);
 
 export default HobbsPane;
