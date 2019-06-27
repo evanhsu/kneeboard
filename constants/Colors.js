@@ -8,7 +8,7 @@ const brown = '#654236'; // Van Dyke Brown
 
 const tintColor = orange;
 
-export default fromJS({
+export const paletteOne = fromJS({
   primary: yellow,
   secondary: brown,
   cta: orange,
@@ -25,3 +25,18 @@ export default fromJS({
   noticeBackground: tintColor,
   noticeText: '#fff',
 });
+
+
+// Palette Option #2
+export const paletteTwo = fromJS({
+  primary: '#7295A0',
+  secondary: '#A3BFA8',
+  dark: '#59594A',
+  light: '#CDE7B0',
+  contrast: '#BE6E46',
+
+  tabIconDefault: '#7295A0',
+  tabIconSelected: '#BE6E46',
+});
+
+export default paletteTwo;
