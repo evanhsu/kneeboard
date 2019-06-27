@@ -3,31 +3,42 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import { padding } from "../constants/Layout";
 import HobbsPane from "./FlightLeg/HobbsPane";
 import FlightTimePane from "./FlightLeg/FlightTimePane";
 import ClockPane from "./FlightLeg/ClockPane";
 import DestinationPane from "./FlightLeg/DestinationPane";
 import UsagePane from "./FlightLeg/UsagePane";
 
-function FlightLeg() {
+function FlightLeg(props) {
+  const { data } = props;
+
+  const handleClick = function () {
+    console.log("CLICK!");
+  };
+
   return (
     <View style={styles.container}>
-      <HobbsPane start={123.0} end={124.8} />
-      <FlightTimePane trip={1.4} cumulative={3.1} />
-      <ClockPane start='11:36' end='12:58' />
-      <DestinationPane destination='H-23'/>
-      <UsagePane waterGallons='1500' cargoPounds='0' passengers={4}/>
+      <HobbsPane start={data.hobbs.start} end={data.hobbs.end} onClick={handleClick} />
+      <FlightTimePane trip={data.flightTime.trip} cumulative={data.flightTime.cumulative} />
+      <ClockPane start={data.clockTime.start} end={data.clockTime.end} />
+      <DestinationPane destination={data.destination} />
+      <UsagePane
+        waterGallons={data.usage.waterGallons}
+        cargoPounds={data.usage.cargoPounds}
+        passengers={data.usage.passengers}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 1,
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     flexDirection: 'row',
+    paddingBottom: padding.get('row'),
   }
 });
 

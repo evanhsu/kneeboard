@@ -6,53 +6,53 @@ import {
 } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import CrewScreen from '../screens/CrewScreen';
+import PowerScreen from '../screens/PowerScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import MissionsScreen from '../screens/MissionsScreen';
+import MissionsScreen from '../screens/FlightLegsScreen';
 
-const HomeStack = createStackNavigator({
-  HomeStuff: HomeScreen,
+const CrewStack = createStackNavigator({
+  Crew: CrewScreen,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+CrewStack.navigationOptions = {
+  tabBarLabel: 'Crew',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-people${focused ? '' : '-outline'}`
+          : 'md-people'
       }
     />
   ),
 };
 
-const MissionsStack = createStackNavigator({
+const FlightLegsStack = createStackNavigator({
   Missions: MissionsScreen,
 });
 
-MissionsStack.navigationOptions = {
-  tabBarLabel: 'Missions',
+FlightLegsStack.navigationOptions = {
+  tabBarLabel: 'Flight Legs',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-airplane' : 'md-airplane'}
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const PowerStack = createStackNavigator({
+  Power: PowerScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+PowerStack.navigationOptions = {
+  tabBarLabel: 'Power',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-battery-charging' : 'md-battery-charging'}
     />
   ),
 };
@@ -72,8 +72,8 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  MissionsStack,
-  HomeStack,
-  LinksStack,
+  FlightLegsStack,
+  CrewStack,
+  PowerStack,
   SettingsStack,
 });
