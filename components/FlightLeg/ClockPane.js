@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
-  TouchableNativeFeedback,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { AppText, PaneTitle, PaneLabel } from "../StyledText";
-import { pane as paneLayout } from '../../constants/Layout';
+import {
+  pane as paneLayout,
+  paneEditor as editorLayout,
+} from '../../constants/Layout';
 
-function ClockPane(props) {
-  const { start, end, handleClick } = props;
-
-  return (
-    <TouchableNativeFeedback onPress={handleClick}>
-      <View style={styles.container}>
-        <PaneTitle>Clock</PaneTitle>
-        <PaneLabel>Start: <AppText>{start}</AppText></PaneLabel>
-        <PaneLabel>End: <AppText>{end}</AppText></PaneLabel>
-      </View>
-    </TouchableNativeFeedback>
+class ClockPane extends Component {
+  editor = (
+    <View style={styles.editor}>
+      <AppText>{this.props.start}</AppText>
+      <AppText>{this.props.end}</AppText>
+    </View>
   );
+
+  render() {
+    return (
+      <TouchableOpacity style={styles.pane} onPress={this.props.onPress('Clock Time', this.editor)}>
+        <PaneTitle>Clock</PaneTitle>
+        <PaneLabel>Start: <AppText>{this.props.start}</AppText></PaneLabel>
+        <PaneLabel>End: <AppText>{this.props.end}</AppText></PaneLabel>
+      </TouchableOpacity>
+    );
+  }
 }
 
-const styles = StyleSheet.create(paneLayout.toJS());
+const styles = StyleSheet.create({
+  pane: paneLayout.toJS(),
+  editor: editorLayout.toJS(),
+});
 
 export default ClockPane;

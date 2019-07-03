@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
-  TouchableNativeFeedback,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { AppText, PaneTitle, PaneLabel } from "../StyledText";
-import { pane as paneLayout } from '../../constants/Layout';
+import {
+  pane as paneLayout,
+  paneEditor as editorLayout,
+} from '../../constants/Layout';
 
-function HobbsPane(props) {
-  const { start, end, handleClick } = props;
-
-  return (
-    <TouchableNativeFeedback onPress={handleClick}>
-      <View style={styles.container} onClick={handleClick}>
-        <PaneTitle>HOBBS</PaneTitle>
-        <PaneLabel>Start: <AppText>{start}</AppText></PaneLabel>
-        <PaneLabel>End: <AppText>{end}</AppText></PaneLabel>
-      </View>
-    </TouchableNativeFeedback>
+class HobbsPane extends Component {
+  editor = (
+    <View style={styles.editor}>
+      <AppText>Start: {this.props.start}</AppText>
+      <AppText>End: {this.props.end}</AppText>
+    </View>
   );
+
+  render() {
+    return (
+      <TouchableOpacity style={styles.pane} onPress={this.props.onPress('HOBBS', this.editor)}>
+        <PaneTitle>HOBBS</PaneTitle>
+        <PaneLabel>Start: <AppText>{this.props.start}</AppText></PaneLabel>
+        <PaneLabel>End: <AppText>{this.props.end}</AppText></PaneLabel>
+      </TouchableOpacity>
+    );
+  }
 }
 
-const styles = StyleSheet.create(paneLayout.toJS());
+const styles = StyleSheet.create({
+  pane: paneLayout.toJS(),
+  editor: editorLayout.toJS(),
+});
 
 export default HobbsPane;

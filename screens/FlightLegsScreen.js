@@ -174,10 +174,11 @@ function getFlightLegs() {
 }
 
 function FlightLegList(props) {
-  const { flightLegs, style } = props;
+  const { flightLegs, style, onOpenPaneEditor } = props;
+
 
   const flightLegList = flightLegs.map((flightLeg) => (
-    <FlightLeg key={flightLeg.hobbs.start} data={flightLeg} />
+    <FlightLeg key={flightLeg.hobbs.start} data={flightLeg} onOpenPane={onOpenPaneEditor}/>
   ));
 
   return (
@@ -188,13 +189,22 @@ function FlightLegList(props) {
 }
 
 
-export default function FlightLegsScreen() {
+export default function FlightLegsScreen(props) {
+  const { navigation } = props;
+
   const flightLegs = getFlightLegs();
+
+  const openPaneEditor = (title, editor) => () => {
+    navigation.push('PaneEditor', {
+      title,
+      editor,
+    });
+  };
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        <FlightLegList flightLegs={flightLegs} style={styles.innerList} />
+        <FlightLegList flightLegs={flightLegs} style={styles.innerList} onOpenPaneEditor={openPaneEditor}/>
       </ScrollView>
     </View>
   );

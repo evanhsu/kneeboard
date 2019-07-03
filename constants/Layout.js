@@ -15,15 +15,18 @@ export const padding = fromJS({
 });
 
 export const pane = fromJS({
-  container: {
-    flex: 1,
-    borderWidth: 1,
-    borderRightWidth: 0,
-    borderColor: '#999',
-    padding: padding.get('cell'),
-    height: '100%',
-    backgroundColor: 'rgba(255,255,255,0.5)',
-  },
+  flex: 1,
+  borderWidth: 1,
+  borderRightWidth: 0,
+  borderColor: '#999',
+  padding: padding.get('cell'),
+  height: '100%',
+  backgroundColor: 'rgba(255,255,255,0.5)',
+});
+
+export const paneEditor = fromJS({
+  flex: 1,
+  padding: padding.get('cell'),
 });
 
 export default {

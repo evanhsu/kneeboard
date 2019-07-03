@@ -10,6 +10,7 @@ import CrewScreen from '../screens/CrewScreen';
 import PowerScreen from '../screens/PowerScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MissionsScreen from '../screens/FlightLegsScreen';
+import PaneEditorScreen from '../components/FlightLeg/PaneEditorScreen';
 
 const CrewStack = createStackNavigator({
   Crew: CrewScreen,
@@ -31,6 +32,7 @@ CrewStack.navigationOptions = {
 
 const FlightLegsStack = createStackNavigator({
   Missions: MissionsScreen,
+  PaneEditor: PaneEditorScreen,
 });
 
 FlightLegsStack.navigationOptions = {
